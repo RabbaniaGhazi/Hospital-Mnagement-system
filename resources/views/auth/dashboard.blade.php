@@ -231,11 +231,11 @@
                                 <div class="flex items-center">
                                     <span class="text-blue-600 font-medium">Task completed</span>
                                 </div>
-                                <div class="text-sm text-green-600">1 hour ago</div>
+                                <div class="text-sm text-green-600">2 hour ago</div>
                             </div>
                             <div class="px-6 py-2 flex items-center text-sm text-gray-600">
                                 <i data-lucide="file" class="h-4 w-4 mr-2"></i>
-                                Update user documentation
+                                Update users documentation
                             </div>
                         </div>
                     </div>

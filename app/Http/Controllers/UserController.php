@@ -97,12 +97,10 @@ class UserController
 
         $dateRange = $dateRanges[$timePeriod] ?? $dateRanges['today'];
 
-        // Get unique patient fees based on doctor-patient relationships for the given time frame
         $totalPatients = DoctorPatient::whereBetween('created_at', [$dateRange['start'], $dateRange['end']])
-            ->distinct('patient_id')  // Ensure you count each patient only once
+            ->distinct('patient_id') 
             ->count('patient_id');
 
-        // Calculate total payment sum based on unique doctor-patient relationships
         $totalPayment = DoctorPatient::whereBetween('created_at', [$dateRange['start'], $dateRange['end']])
             ->sum('total_fee');
 
