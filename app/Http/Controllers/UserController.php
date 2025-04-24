@@ -14,8 +14,8 @@ class UserController
 {
    public function index()
    {
-    $user = User::all();
-    return view ('users.index')->with('users' ,$user);
+    $users = User::all();
+    return view ('users.index')->with('users' ,$users);
    }
    public function create()
    {
@@ -39,12 +39,12 @@ class UserController
         ]);
         $users = User::all();
 
-       return view ('users.index')->with(['users' => $users, 'success' => 'User created successfully!']);
+        return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit')->with('users' ,$user);
+        return view('users.edit')->with('user' ,$user);
     }
 
     public function update(Request $request, $id)
@@ -69,8 +69,8 @@ class UserController
 
     $user->save();
     $users = User::all();
-     return view ('users.index')->with(['users' => $users, 'success' => 'User updated successfully!']);
-    }
+     return redirect()->route('users.index')->with('success', 'User updated successfully!');
+}
     public function overview(Request $request)
     {
         $timePeriod = $request->get('time_period', 'today');
