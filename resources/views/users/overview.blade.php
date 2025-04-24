@@ -3,48 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Overview</title>
+    @vite('resources/css/app.css') <!-- Using Vite for asset management -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script> <!-- Lucide for icons -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
-<body>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-        background-size: cover;
-        background-position: center;
-        margin: 0;
-        padding: 0;
-    }
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-900 text-white flex flex-col transition-transform transform md:translate-x-0" id="sidebar">
+            <!-- Logo -->
+            <div class="flex items-center px-6 py-6">
+                <div class="bg-indigo-600 p-1 rounded">
+                    <i data-lucide="zap" class="h-6 w-6 text-white"></i>
+                </div>
+                <span class="ml-3 text-lg font-medium">Dashboard</span>
+            </div>
 
-    .container {
-        width: 80%;
-        max-width: 800px;
-        margin: 100px auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-    }
+            <!-- Navigation -->
+            <nav class="flex-1 px-3 py-4">
+                <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <i data-lucide="home" class="h-5 w-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="{{ route('users.index') }}" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md bg-gray-800 text-white">
+                    <i data-lucide="users" class="h-5 w-5 mr-3"></i>
+                    Doctors
+                </a>
+                <a href="{{ route('patients.index') }}" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <i data-lucide="user" class="h-5 w-5 mr-3"></i>
+                    Patients
+                </a>
+                <a href="#" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <i data-lucide="folder" class="h-5 w-5 mr-3"></i>
+                    Projects
+                </a>
+                <a href="#" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <i data-lucide="calendar" class="h-5 w-5 mr-3"></i>
+                    Calendar
+                </a>
+                <a href="#" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5 mr-3"></i>
+                    Reports
+                </a>
+            </nav>
 
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
-
-    .summary {
-        margin-bottom: 20px;
-        padding: 15px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
-    }
-
-    .alert {
-        margin-bottom: 15px;
-    }
-</style>
+            <!-- User Profile -->
+            <div class="border-t border-gray-800 p-4 flex items-center">
+                <img src="https://via.placeholder.com/40" alt="User avatar" class="h-10 w-10 rounded-full">
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-white">{{ Auth::user()->name }}</p>
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="text-xs text-gray-400 hover:text-white">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 <div class="container">
     <h1>Financial Overview</h1>

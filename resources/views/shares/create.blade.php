@@ -25,7 +25,7 @@
                 </a>
                 <a href="{{ route('users.index') }}" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                     <i data-lucide="users" class="h-5 w-5 mr-3"></i>
-                    Users
+                    Doctors
                 </a>
                 <a href="{{ route('patients.index') }}" class="flex items-center px-3 py-2 my-1 text-sm font-medium rounded-md bg-gray-800 text-white">
                     <i data-lucide="user" class="h-5 w-5 mr-3"></i>
