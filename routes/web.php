@@ -19,6 +19,10 @@ Route::get('/password/reset', [PasswordResetController::class, 'showResetForm'])
 Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
 });
 
+Route::get('/home', function () {
+    return view('home'); // This also renders home.blade.php
+});
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
