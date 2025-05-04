@@ -19,9 +19,24 @@ Route::get('/password/reset', [PasswordResetController::class, 'showResetForm'])
 Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
 });
 
-Route::get('/home', function () {
-    return view('home'); // This also renders home.blade.php
-});
+Route::get('/home',function(){
+    return view('frontend.home');
+})->name('home');
+
+Route::get('/services', function () {
+    return view('frontend.services');
+})->name('services');
+
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+})->name('contact');
+Route::get('/doctors', function () {
+    return view('frontend.doctors');
+})->name('doctors');
 
 Route::get('/', function () {
     return redirect()->route('login');
