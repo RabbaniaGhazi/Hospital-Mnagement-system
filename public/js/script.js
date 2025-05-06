@@ -14,6 +14,7 @@
 
     /* ----- Navbar Scroll To Fixed ----- */
     function navbarScrollfixed() {
+        if($('.navbar-scrolltofixed').length){
         $('.navbar-scrolltofixed').scrollToFixed();
         var summaries = $('.summary');
         summaries.each(function(i) {
@@ -34,6 +35,26 @@
             });
         });
     }
+}
+    $(document).on('ready', function() {
+        preloaderLoad();
+        navbarScrollToFixed();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+        // Add your other initialization functions here
+    
+    /* When Window is loading, do */
+    $(window).on('load', function() {
+        // Functions that should run when entire page is fully loaded
+        preloaderLoad();
+        setTimeout(function() {
+            $('.preloader').fadeOut('slow');
+        }, 2000);
+    });
 
     /* ----- Mobile Nav ----- */
     $(function() {

@@ -33,20 +33,39 @@
     
     <!-- Additional styles -->
     @stack('styles')
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
 </head>
 <body>
     <div class="wrapper">
         <!-- Preloader -->
-        @include('frontend.layouts.preloader')
+        <div class="preloader">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
         
         <!-- Content -->
         @yield('content')
         
         <!-- JS Files -->
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/slick.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed.min.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
         <!-- Add other JS files here -->
         @stack('scripts')
+        <script>
+            // Immediate preloader fix
+            $(window).on('load', function() {
+                $('.preloader').fadeOut('slow');
+            });
+            
+            // Failsafe: Force hide preloader after 2 seconds
+            setTimeout(function() {
+                $('.preloader').fadeOut('slow');
+            }, 2000);
+        </script>
     </div>
 </body>
 </html>
