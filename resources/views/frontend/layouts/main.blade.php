@@ -33,7 +33,7 @@
     
     <!-- Additional styles -->
     @stack('styles')
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -49,22 +49,27 @@
         @yield('content')
         
         <!-- JS Files -->
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('js/slick.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed.min.js"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+       <!-- <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+       <!-- <script src="{{ asset('js/slick.min.js') }}"></script> -->
+       <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery-scrolltofixed.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollToFixed/1.0.8/jquery.scrolltofixed.min.js"></script>
         <script src="{{ asset('js/script.js') }}"></script>
         <!-- Add other JS files here -->
         @stack('scripts')
         <script>
-            // Immediate preloader fix
-            $(window).on('load', function() {
-                $('.preloader').fadeOut('slow');
-            });
-            
+             $(document).ready(function() {
+        // Hide preloader when page is loaded
+        $('.preloader').fadeOut('slow');
             // Failsafe: Force hide preloader after 2 seconds
             setTimeout(function() {
                 $('.preloader').fadeOut('slow');
+                $('.preloader').remove();
             }, 2000);
+          });
         </script>
     </div>
 </body>
